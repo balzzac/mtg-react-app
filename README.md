@@ -1,68 +1,43 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Coding Exercise
+## Overview
+Using the programming language(s) of your choice, consume the public JSON API and render a responsive grid of cards, displaying each `"creature"` card. The application should display the first 20 cards and automatically retrieve additional cards as the user scrolls down the page. Expect your solution to be viewed on modern desktop and mobile browsers.
 
-## Available Scripts
+## API
+Use the following API (not affiliated with Wizards of the Coast) to retrieve a filtered list of `Magic: The Gathering` cards. For this exercise, we want you to display cards of the creature type.
 
-In the project directory, you can run:
+* API Location: https://api.magicthegathering.io/v1/cards
+* API Documentation:
+https://docs.magicthegathering.io/
+https://docs.magicthegathering.io/#api_v1cards_list
 
-### `npm start`
+## Design Details
+> Here are the basic design parameters for this exercise:
+* Display the results in a "card" format, where the cards flow from left to right across the width of the screen and then down to the next row creating as many rows as necessary.
+* Each card should display: image, name, artist, set name, and original type. You may also display additional fields.
+* The card's image should be displayed prominently. How and when the other data is displayed is up to you.
+* Use a responsive design. The cards should reflow as-needed based on the size of the browser window. You may limit the maximum display area but may not use a fixed width.
+* As the user scrolls down the page, additional cards should be loaded and appended. (This method of displaying results is often referred to as "infinite scroll.")
+* Include a page header. You may also include additional layout elements at your discretion.
+* Display a loading indicator when communicating with the API.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> Once your basic design is working, add these additional features (you get to decide all the details):
+* Search (at a minimum, by the card's name)
+* Sort (card name, set, artist, etc.)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Implementation Requirements
+> Please be sure to handle the following requirements in your implementation:
+* For this exercise, **only** display cards that are of type `"creature"`.
+* Initially, display the first 20 results returned by the API.
+* Use the API to sort the results alphabetically by the card's name.
+* Retrieve additional pages of results as-needed to fill the window, but do not load more than 50 with each request.
+* Do not preload all results.
+* As noted previously, we're not going to limit you on what web technologies you want to use.
+* Be creative! You don't have to stop with these requirements.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Above & Beyond
+Is this all too easy, or not sufficient to show off your dev skills? No problem! Complete the requirements and then keep going. We’d love to see you take this a step further to showcase your creativity and talents. Here are some suggestions, but feel free to come up with some of your own!
+* Filter cards (feel free to exceed the type restriction as long as it defaults to `"creature"`)
+* Display number of cards loaded
+* Group by set (and/or other fields)
+* Show related cards (e.g., cards of the same type, cards in the same set)
+* Add cards to a list or collection (e.g., build a deck)
