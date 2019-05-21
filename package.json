@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "eslint": "^5.16.0",
-    "eslint-config-google": "^0.13.0"
+    "eslint-config-google": "^0.13.0",
+    "gulp": "^4.0.2"
   }
 }
