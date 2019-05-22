@@ -1,0 +1,17 @@
+@charset 'utf-8';
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.l-header {
+  @extend %flex-row;
+  @include justify-content(center);
+  height: $header-height;
+
+  &--logo {
+    height: 60px;
+  }
+}
+
+.a-header {
+  background-image: linear-gradient(to right, #f9d423 0%, #ff4e50 100%);
+}
