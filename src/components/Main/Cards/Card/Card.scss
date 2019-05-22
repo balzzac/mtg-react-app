@@ -1,0 +1,79 @@
+@charset 'utf-8';
+@import '../../../../styles/mixins';
+@import '../../../../styles/variables';
+
+.l-card {
+  @extend %flex-column;
+  @include box(480px, 280px);
+  @include border-radius(10px);
+  @include justify-content(space-between);
+  box-sizing: border-box;
+  margin: $space-s;
+  min-height: 480px;
+  max-height: 480px;
+  padding: $space-s;
+
+  &--name {
+    @extend %flex-row;
+    @include justify-content(center);
+    box-sizing: border-box;
+    max-width: calc(280px - #{$space-s} * 2);
+    padding: $space-xs;
+  }
+  &--image {
+    @include border-radius(10px);
+  }
+  &--image-sub {
+    @extend %flex-column;
+    @include box(280px, 200px);
+    @include justify-content(center);
+  }
+
+  &--original-type {
+    @extend %flex-row;
+    @include justify-content(center);
+    box-sizing: border-box;
+    max-width: calc(280px - #{$space-s} * 2);
+    padding: $space-xs;
+  }
+  &--footer {
+    @extend %flex-row;
+    @include justify-content(space-between);
+    box-sizing: border-box;
+    width: calc(280px - #{$space-s} * 2);
+    padding: 0 $space-xs;
+  }
+}
+
+.a-card {
+  @include box-shadow();
+  &.has-black-bg {
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
+    & > * {
+      color: #ffffff;
+    }
+  }
+  &.has-blue-bg {
+    background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);
+  }
+  &.has-green-bg {
+    background-image: linear-gradient(to top, #37ecba 0%, #72afd3 100%);
+  }
+  &.has-red-bg {
+    background-image: linear-gradient(to right, #f9d423 0%, #ff4e50 100%);
+  }
+  &.has-white-bg {
+    background-color: #e4e4e1;
+    background-image: radial-gradient(
+        at top center,
+        rgba(255, 255, 255, 0.03) 0%,
+        rgba(0, 0, 0, 0.03) 100%
+      ),
+      linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(143, 152, 157, 0.6) 100%
+      );
+    background-blend-mode: normal, multiply;
+  }
+}
