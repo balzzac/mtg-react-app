@@ -1,4 +1,6 @@
 # Solution Notes
+Live demo: https://mtgcodechallenge.netlify.com/
+
 ## Environment:
 * Used: `create-react-app`
 * Added: `Eslint` with Google guidelines
@@ -33,11 +35,16 @@
    * `a-` prefix for appearance
    * `t /s` - prefix for typography
    * `has-` - prefix for modifiers
+ * Developed in Google Chrome, tested in Mozilla, Safari, Opera, Edge (observer issues).
 
 ## Screenshots
+> On Load
   * ![screenshot on load](screenshot-default-onload.png)
+> After subsequent scroll
   * ![screenshot after subsequent scroll](screenshot-default-after-scroll.png)
-  * ![screenshot after search and scroll](screenshot-search&sort.png)
+> After search and sort
+  * ![screenshot after search and sort](screenshot-search&sort.png)
+> Mobile screen view
   * ![screenshot on load with search mobile](screenshot-mobile.png)
 
 ## Places for improvement:
@@ -48,6 +55,7 @@
 * Move `Controls` to a separate component
 * When component will unmount -> unobserve intersection observer
 * Automated testing
+* Fixes for Edge
 
 ## Issues
 * Query results have duplicated names, however `id`s are different so I've kept the results. As a future consideration, maybe add filtering on results by some criteria. For example, API has `contains` that "filters cards based on whether or not they have a specific field available (like imageUrl)"
