@@ -154,6 +154,7 @@ export default class Main extends Component {
     const loadingCSS = {
       height: '10px',
       marginTop: '0',
+      width: '1px',
     };
     const {cards, isFetching, numberLoaded} = this.state;
     return (
