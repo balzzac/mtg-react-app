@@ -58,7 +58,7 @@ export default function Card(props) {
       </div>
       <div className="l-card--footer">
         <p className="s1">{artist}</p>
-        <p className="s1">{setName}</p>
+        <p className="s1 l-card--footer--set-name">{setName}</p>
       </div>
     </div>
   );

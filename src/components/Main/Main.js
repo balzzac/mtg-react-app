@@ -68,8 +68,6 @@ export default class Main extends Component {
    * @param {string} searchValue
    */
   getCards(page, sortValue = 'name', searchValue = '') {
-    console.log('Logged output: Main -> getCards -> searchValue', searchValue);
-    console.log('Logged output: Main -> getCards -> page', page);
     const pageSize = 20;
     const filterQuery = searchValue ? `&&name=${searchValue}` : '';
     this.setState({isFetching: true});
@@ -161,7 +159,7 @@ export default class Main extends Component {
     return (
       <main className="l-main">
         <h1 className="t1">
-          MTG Creatures{numberLoaded && `.${numberLoaded} loaded`}
+          MTG Creatures{numberLoaded && ` (${numberLoaded} loaded)`}
         </h1>
         {!isFetching && cards.length === 0 && (
           <p className="t0">No cards have been found</p>
