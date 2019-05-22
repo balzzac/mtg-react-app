@@ -41,3 +41,5 @@ Is this all too easy, or not sufficient to show off your dev skills? No problem!
 * Group by set (and/or other fields)
 * Show related cards (e.g., cards of the same type, cards in the same set)
 * Add cards to a list or collection (e.g., build a deck)
+
+# See Process.md for my thought process

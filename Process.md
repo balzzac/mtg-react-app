@@ -6,6 +6,7 @@
 4. Added: `gulp-imagemin` plugin for minifying images.
 5. Added: `api.http` for testing provided REST API with the help of VS Code `REST Client` extension.
 6. Used: Koala tool for compiling SCSS in CSS
+7. Used: `axios` for data fetching and cancelling subsequent requests (in case of searching)
 
 ## Development:
 1. Added: logo for the app (minified -5.8% in size) and new favicon.ico
@@ -21,17 +22,32 @@
    * `Main` that contains page title, `Cards`, `Card`, `Loader`
 4. Created: file structure with components.
 5. Created: `mixins.scss` file to accelerate styling of components.
-6. Considered: WCAG recommendations for UI.
-7. Considered: atomic BEM principles for class naming.
+6. Utilized: flex-box and fluid typography to ensure responsive design
+7. Considered: WCAG recommendations for UI.
+8. Considered: atomic BEM principles for class naming.
    * `l-` prefix for layout
    * `a-` prefix for appearance
-   *
+   * `t /s` - prefix for typography
+   * `has-` - prefix for modifiers
+9. Created: additional mockup to incorporate the following:
+   * Search (at a minimum, by the card's name)
+   * Sort (card name, set, artist, etc.)
+   * ![layout with controls](layout_with_controls.jpg)
+
+## Screenshots
+  * ![screenshot on load](screenshot-default-onload.png)
+  * ![screenshot after subsequent scroll](screenshot-default-after-scroll.png)
+  * ![screenshot after search and scroll](screenshot-search&sort.png)
+  * ![screenshot on load with search mobile](screenshot-mobile.png)
 
 ## Places for improvement:
 1. Accessibility with `aria`-attributes
-2. Graceful degradation to insure broader browser support
-3. Usage of fluid typography to insure smooth responsive design
-4. SEO
-5. Fancy `Loader`
+2. Colors --> SCSS variables
+3. SEO
+4. Fancy `Loader`
+5. Move `Controls` to separate component
+6. When component will unmount -> unobserve intersection observer
 
-
+## Issues
+* Query results have duplicated names, however `id`s are different so I've kept the results. As a future consideration, maybe add filtering on results by some criteria. For example, API has `contains` that "filters cards based on whether or not they have a specific field available (like imageUrl)"
+* Per requirement, sorting by name needs to be done via API call, however, I've encountered a problem using provided API when paginated -> database sends duplicates (if there is no `orderBy` -> there is no problem). Via documentation it is not clear to me how to conduct sorting both on `name` and `id` to ensure that there is no duplicates, so I've decided to handle that (duplicates) on the client side.
