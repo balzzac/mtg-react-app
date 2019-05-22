@@ -1,45 +1,54 @@
-# Coding Exercise
-## Overview
-Using the programming language(s) of your choice, consume the public JSON API and render a responsive grid of cards, displaying each `"creature"` card. The application should display the first 20 cards and automatically retrieve additional cards as the user scrolls down the page. Expect your solution to be viewed on modern desktop and mobile browsers.
+# Solution Notes
+## Environment:
+* Used: `create-react-app`
+* Added: `Eslint` with Google guidelines
+* Added: `gulp` for task automation
+* Added: `gulp-imagemin` plugin for minifying images
+* Added: `api.http` for testing provided REST API with the help of VS Code `REST Client` extension
+* Used: `Koala` tool for compiling SCSS into CSS
+* Used: `axios` for data fetching and cancelling subsequent requests (in case of searching)
 
-## API
-Use the following API (not affiliated with Wizards of the Coast) to retrieve a filtered list of `Magic: The Gathering` cards. For this exercise, we want you to display cards of the creature type.
+## Development Considerations:
+* Added: logo for the app (minified -5.8% in size) and new favicon.ico
+   * ![logo](/src/images/minified/MTGlogo.png)
+   * ![favicon](public/favicon.ico)
+* Created: basic mockup for the page in Photoshop to meet the following requirements:
+   * Display the results in a "card" format, where the cards flow from left to right across the width of the screen and then down to the next row creating as many rows as necessary.
+   * Each card should display: image, name, artist, set name, and original type. You may also display additional fields.
+   * Include a page header. You may also include additional layout elements at your discretion.
+   * ![basic layout](basic_layout.jpg)
+* Created: additional mockup to incorporate the following:
+   * Search (at a minimum, by the card's name)
+   * Sort (card name, set, artist, etc.)
+   * ![layout with controls](layout_with_controls.jpg)
+* Separated design into the following components within `<App/>`:
+   * `Header` with the logo
+   * `Main` that contains page title, `Cards`, `Card`, `Loader`
+* Created: file structure with components
+* Created: `mixins.scss` and `variables.scss` files to accelerate styling of components
+* Utilized: flex-box and fluid typography to ensure responsive design
+* Considered & Utilized: WCAG recommendations for UI
+* Considered & Utilized: atomic BEM principles for class naming
+   * `l-` prefix for layout
+   * `a-` prefix for appearance
+   * `t /s` - prefix for typography
+   * `has-` - prefix for modifiers
 
-* API Location: https://api.magicthegathering.io/v1/cards
-* API Documentation:
-https://docs.magicthegathering.io/
-https://docs.magicthegathering.io/#api_v1cards_list
+## Screenshots
+  * ![screenshot on load](screenshot-default-onload.png)
+  * ![screenshot after subsequent scroll](screenshot-default-after-scroll.png)
+  * ![screenshot after search and scroll](screenshot-search&sort.png)
+  * ![screenshot on load with search mobile](screenshot-mobile.png)
 
-## Design Details
-> Here are the basic design parameters for this exercise:
-* Display the results in a "card" format, where the cards flow from left to right across the width of the screen and then down to the next row creating as many rows as necessary.
-* Each card should display: image, name, artist, set name, and original type. You may also display additional fields.
-* The card's image should be displayed prominently. How and when the other data is displayed is up to you.
-* Use a responsive design. The cards should reflow as-needed based on the size of the browser window. You may limit the maximum display area but may not use a fixed width.
-* As the user scrolls down the page, additional cards should be loaded and appended. (This method of displaying results is often referred to as "infinite scroll.")
-* Include a page header. You may also include additional layout elements at your discretion.
-* Display a loading indicator when communicating with the API.
+## Places for improvement:
+* Accessibility with `aria`-attributes
+* Better organization of SCSS code
+* SEO
+* Fancy `Loader`
+* Move `Controls` to a separate component
+* When component will unmount -> unobserve intersection observer
+* Automated testing
 
-> Once your basic design is working, add these additional features (you get to decide all the details):
-* Search (at a minimum, by the card's name)
-* Sort (card name, set, artist, etc.)
-
-## Implementation Requirements
-> Please be sure to handle the following requirements in your implementation:
-* For this exercise, **only** display cards that are of type `"creature"`.
-* Initially, display the first 20 results returned by the API.
-* Use the API to sort the results alphabetically by the card's name.
-* Retrieve additional pages of results as-needed to fill the window, but do not load more than 50 with each request.
-* Do not preload all results.
-* As noted previously, we're not going to limit you on what web technologies you want to use.
-* Be creative! You don't have to stop with these requirements.
-
-## Above & Beyond
-Is this all too easy, or not sufficient to show off your dev skills? No problem! Complete the requirements and then keep going. We’d love to see you take this a step further to showcase your creativity and talents. Here are some suggestions, but feel free to come up with some of your own!
-* Filter cards (feel free to exceed the type restriction as long as it defaults to `"creature"`)
-* Display number of cards loaded
-* Group by set (and/or other fields)
-* Show related cards (e.g., cards of the same type, cards in the same set)
-* Add cards to a list or collection (e.g., build a deck)
-
-# See Process.md for my thought process
+## Issues
+* Query results have duplicated names, however `id`s are different so I've kept the results. As a future consideration, maybe add filtering on results by some criteria. For example, API has `contains` that "filters cards based on whether or not they have a specific field available (like imageUrl)"
+* Per requirement, sorting by name needs to be done via API call, however, I've encountered a problem using provided API when paginated -> database sends duplicates (if there is no `orderBy` -> there is no problem). Via documentation it is not clear to me how to conduct sorting both on `name` and `id` to ensure that there are no duplicates, so I've decided to handle that (duplicates) on the client side.
