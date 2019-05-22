@@ -11,7 +11,6 @@ import './Cards.css';
  * @return {jsx}
  */
 export default function Cards(props) {
-  console.log(props);
   return (
     <div className="l-cards">
       {props.cards.map((card) => (
